@@ -23,9 +23,11 @@ import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
@@ -52,10 +54,11 @@ import java.util.List;
 import java.util.Map;
 
 public class NotificationFragment extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener, Indexable {
+        implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener, Indexable {
 
     private static final int DIALOG_STOPLIST_APPS = 0;
     private static final int DIALOG_BLACKLIST_APPS = 1;
+    private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
 
     private PackageListAdapter mPackageAdapter;
     private PackageManager mPackageManager;
@@ -63,15 +66,21 @@ public class NotificationFragment extends SettingsPreferenceFragment
     private PreferenceGroup mBlacklistPrefList;
     private Preference mAddStoplistPref;
     private Preference mAddBlacklistPref;
+    private ListPreference mHeadsUpTimeOut;
 
     private String mStoplistPackageList;
     private String mBlacklistPackageList;
     private Map<String, Package> mStoplistPackages;
     private Map<String, Package> mBlacklistPackages;
 
-
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mHeadsUpTimeOut) {
+            int headsUpTimeOut = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.HEADS_UP_TIMEOUT, headsUpTimeOut);
+            updateHeadsUpTimeOutSummary(headsUpTimeOut);
+            return true;
+        }
         return false;
     }
 
@@ -91,6 +100,27 @@ public class NotificationFragment extends SettingsPreferenceFragment
         mAddBlacklistPref = findPreference("add_blacklist_packages");
         mAddStoplistPref.setOnPreferenceClickListener(this);
         mAddBlacklistPref.setOnPreferenceClickListener(this);
+
+        Resources systemUiResources;
+        try {
+            systemUiResources = getPackageManager().getResourcesForApplication("com.android.systemui");
+        } catch (Exception e) {
+            return;
+        }
+
+        int defaultTimeOut = systemUiResources.getInteger(systemUiResources
+                .getIdentifier("com.android.systemui:integer/heads_up_notification_decay", null, null));
+        mHeadsUpTimeOut = (ListPreference) findPreference(PREF_HEADS_UP_TIME_OUT);
+        mHeadsUpTimeOut.setOnPreferenceChangeListener(this);
+        int headsUpTimeOut = Settings.System.getInt(getContentResolver(), Settings.System.HEADS_UP_TIMEOUT,
+                defaultTimeOut);
+        mHeadsUpTimeOut.setValue(String.valueOf(headsUpTimeOut));
+        updateHeadsUpTimeOutSummary(headsUpTimeOut);
+    }
+
+    private void updateHeadsUpTimeOutSummary(int value) {
+        String summary = getResources().getString(R.string.heads_up_time_out_summary, value / 1000);
+        mHeadsUpTimeOut.setSummary(summary);
     }
 
     @Override
@@ -137,27 +167,26 @@ public class NotificationFragment extends SettingsPreferenceFragment
         dialog = builder.create();
 
         switch (id) {
-            case DIALOG_STOPLIST_APPS:
-                list.setOnItemClickListener(new OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // Add empty application definition, the user will be able to edit it later
-                        PackageItem info = (PackageItem) parent.getItemAtPosition(position);
-                        addCustomApplicationPref(info.packageName, mStoplistPackages);
-                        dialog.cancel();
-                    }
-                });
-                break;
-            case DIALOG_BLACKLIST_APPS:
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent,
-                            View view, int position, long id) {
-                        PackageItem info = (PackageItem) parent.getItemAtPosition(position);
-                        addCustomApplicationPref(info.packageName, mBlacklistPackages);
-                        dialog.cancel();
-                    }
-                });
+        case DIALOG_STOPLIST_APPS:
+            list.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // Add empty application definition, the user will be able to edit it later
+                    PackageItem info = (PackageItem) parent.getItemAtPosition(position);
+                    addCustomApplicationPref(info.packageName, mStoplistPackages);
+                    dialog.cancel();
+                }
+            });
+            break;
+        case DIALOG_BLACKLIST_APPS:
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    PackageItem info = (PackageItem) parent.getItemAtPosition(position);
+                    addCustomApplicationPref(info.packageName, mBlacklistPackages);
+                    dialog.cancel();
+                }
+            });
         }
         return dialog;
     }
@@ -240,28 +269,25 @@ public class NotificationFragment extends SettingsPreferenceFragment
         } else if (preference == mAddBlacklistPref) {
             showDialog(DIALOG_BLACKLIST_APPS);
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.dialog_delete_title)
-                    .setMessage(R.string.dialog_delete_message)
-                    .setIconAttribute(android.R.attr.alertDialogIcon)
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setTitle(R.string.dialog_delete_title)
+                    .setMessage(R.string.dialog_delete_message).setIconAttribute(android.R.attr.alertDialogIcon)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (preference == mBlacklistPrefList.findPreference(preference.getKey())) {
-                                 removeApplicationPref(preference.getKey(), mBlacklistPackages);
+                                removeApplicationPref(preference.getKey(), mBlacklistPackages);
                             } else if (preference == mStoplistPrefList.findPreference(preference.getKey())) {
                                 removeApplicationPref(preference.getKey(), mStoplistPackages);
                             }
                         }
-                    })
-                    .setNegativeButton(android.R.string.cancel, null);
+                    }).setNegativeButton(android.R.string.cancel, null);
 
-        builder.show();
+            builder.show();
         }
         return true;
     }
 
-     private void addCustomApplicationPref(String packageName, Map<String,Package> map) {
+    private void addCustomApplicationPref(String packageName, Map<String, Package> map) {
         Package pkg = map.get(packageName);
         if (pkg == null) {
             pkg = new Package(packageName);
@@ -271,12 +297,9 @@ public class NotificationFragment extends SettingsPreferenceFragment
         }
     }
 
-    private Preference createPreferenceFromInfo(Package pkg)
-            throws PackageManager.NameNotFoundException {
-        PackageInfo info = mPackageManager.getPackageInfo(pkg.name,
-                PackageManager.GET_META_DATA);
-        Preference pref =
-                new Preference(getActivity());
+    private Preference createPreferenceFromInfo(Package pkg) throws PackageManager.NameNotFoundException {
+        PackageInfo info = mPackageManager.getPackageInfo(pkg.name, PackageManager.GET_META_DATA);
+        Preference pref = new Preference(getActivity());
 
         pref.setKey(pkg.name);
         pref.setTitle(info.applicationInfo.loadLabel(mPackageManager));
@@ -286,7 +309,7 @@ public class NotificationFragment extends SettingsPreferenceFragment
         return pref;
     }
 
-    private void removeApplicationPref(String packageName, Map<String,Package> map) {
+    private void removeApplicationPref(String packageName, Map<String, Package> map) {
         if (map.remove(packageName) != null) {
             savePackageList(false, map);
             refreshCustomApplicationPrefs();
@@ -318,7 +341,7 @@ public class NotificationFragment extends SettingsPreferenceFragment
         return parsed;
     }
 
-    private void parseAndAddToMap(String baseString, Map<String,Package> map) {
+    private void parseAndAddToMap(String baseString, Map<String, Package> map) {
         if (baseString == null) {
             return;
         }
@@ -333,10 +356,8 @@ public class NotificationFragment extends SettingsPreferenceFragment
         }
     }
 
-
-    private void savePackageList(boolean preferencesUpdated, Map<String,Package> map) {
-        String setting = map == mStoplistPackages
-                ? Settings.System.HEADS_UP_STOPLIST_VALUES
+    private void savePackageList(boolean preferencesUpdated, Map<String, Package> map) {
+        String setting = map == mStoplistPackages ? Settings.System.HEADS_UP_STOPLIST_VALUES
                 : Settings.System.HEADS_UP_BLACKLIST_VALUES;
 
         List<String> settings = new ArrayList<String>();
@@ -351,8 +372,7 @@ public class NotificationFragment extends SettingsPreferenceFragment
                 mBlacklistPackageList = value;
             }
         }
-        Settings.System.putString(getContentResolver(),
-                setting, value);
+        Settings.System.putString(getContentResolver(), setting, value);
     }
 
     @Override
