@@ -32,6 +32,13 @@
             android:defaultValue="true" />
 
         <Preference
+            android:title="@string/navbar_tuner_title" >
+            <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.NavBarActivity" />
+        </Preference>
+
+        <Preference
             android:key="gesture_settings"
             android:icon="@drawable/ic_gestures_custom"
             android:title="@string/gesture_preference_title"

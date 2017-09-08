@@ -320,4 +320,7 @@
     <string name="powermenu_lockscreen_title">Lockscreen visibility</string>
     <string name="powermenu_lockscreen_summary">Enable the ability to show and use the power menu dialog while on the lockscreen</string>
 
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Navigation bar settings</string>
+
 </resources>
