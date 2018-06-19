@@ -25,6 +25,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ import java.util.TreeSet;
 import com.android.settings.R;
 
 public class PackageListAdapter extends BaseAdapter implements Runnable {
+
+    private static final int SIZE = 64;
     private PackageManager mPm;
     private LayoutInflater mInflater;
     private List<PackageItem> mInstalledPackages = new LinkedList<PackageItem>();
@@ -126,23 +129,14 @@ public class PackageListAdapter extends BaseAdapter implements Runnable {
             holder.icon = (ImageView) convertView.findViewById(R.id.icon);
         }
 
+        holder.icon.getLayoutParams().height = SIZE;
+        holder.icon.getLayoutParams().width = SIZE;
+        holder.icon.setScaleType(ImageView.ScaleType.FIT_XY);
         PackageItem applicationInfo = getItem(position);
+        holder.title.setTextSize(TypedValue.COMPLEX_UNIT_SP, SIZE/4);
         holder.title.setText(applicationInfo.title);
         holder.icon.setImageDrawable(applicationInfo.icon);
-
-        boolean needSummary = applicationInfo.activityTitles.size() > 0;
-        if (applicationInfo.activityTitles.size() == 1) {
-            if (TextUtils.equals(applicationInfo.title, applicationInfo.activityTitles.first())) {
-                needSummary = false;
-            }
-        }
-
-        if (needSummary) {
-            holder.summary.setText(TextUtils.join(", ", applicationInfo.activityTitles));
-            holder.summary.setVisibility(View.VISIBLE);
-        } else {
-            holder.summary.setVisibility(View.GONE);
-        }
+        holder.summary.setVisibility(View.GONE);
 
         return convertView;
     }
