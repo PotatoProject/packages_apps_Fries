@@ -71,26 +71,34 @@
     <PreferenceCategory
         android:key="qs_category"
         android:title="@string/qs_themes_category_title" >
-        <com.potato.fries.preferences.CustomSeekBarPreference
-            android:key="qs_panel_alpha"
-            android:title="@string/qs_panel_alpha_title"
-            android:max="255"
-            settings:min="0"
-            settings:units=""
-            android:persistent="false" />
+        <com.potato.fries.preferences.SystemSettingSwitchPreference
+            android:key="qs_panel_bg_use_fw"
+            android:title="@string/qs_bg_use_fw"
+            android:summary="@string/qs_bg_use_fw_summary"
+            android:defaultValue="true"
+            android:disableDependentsState="true" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="qs_panel_color"
             android:title="@string/qs_panel_color_title"
             android:defaultValue="0xffffff"
             android:persistent="false"
-            android:dependency="qs_panel_bg_use_wall" />
+            android:dependency="qs_panel_bg_use_fw" />
+
+        <com.potato.fries.preferences.CustomSeekBarPreference
+            android:key="qs_panel_alpha"
+            android:title="@string/qs_panel_alpha_title"
+            android:max="255"
+            settings:min="0"
+            settings:units=""
+            android:persistent="false"
+            android:dependency="qs_panel_bg_use_fw" />
 
         <com.potato.fries.preferences.SystemSettingSwitchPreference
             android:key="qs_panel_bg_use_wall"
             android:title="@string/qs_bg_wall_title"
             android:summary="@string/qs_bg_wall_summary"
             android:defaultValue="false"
-            android:disableDependentsState="true" />
+            android:dependency="qs_panel_bg_use_fw" />
     </PreferenceCategory>
 </PreferenceScreen>
