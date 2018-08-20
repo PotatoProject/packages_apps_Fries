@@ -38,6 +38,12 @@
         android:key="navbar_visibility"
         android:title="@string/navbar_visibility" />
 
+    <Preference
+        android:key="gesture_settings"
+        android:icon="@drawable/ic_gestures_custom"
+        android:title="@string/gesture_settings_title"
+        android:fragment="com.potato.fries.fragments.GestureSettings" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
