@@ -37,34 +37,4 @@
 
     </PreferenceCategory>
 
- <PreferenceCategory
-    android:title="@string/lockscreen_title">
-
-    <com.potato.fries.preferences.SystemSettingListPreference
-        android:key="weather_lockscreen_unit"
-        android:dialogTitle="@string/weather_unit"
-        android:title="@string/weather_unit"
-        android:summary="%s"
-        android:entries="@array/weather_unit_entries"
-        android:entryValues="@array/weather_unit_values"
-        android:defaultValue="0" />
-
-    <com.potato.fries.preferences.SecureSettingSwitchPreference
-        android:key="face_auto_unlock"
-        android:title="@string/face_auto_unlock_title"
-        android:summary="@string/face_auto_unlock_summary"
-        android:defaultValue="false" />
-
-    <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_anywhere"
-        android:title="@string/double_tap_sleep_lockscreen"
-        android:defaultValue="false" />
-
-    <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_gesture"
-        android:title="@string/double_tap_sleep_gesture_title"
-        android:defaultValue="false" />
-
- </PreferenceCategory>
-
 </PreferenceScreen>

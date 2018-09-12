@@ -374,4 +374,12 @@
     <string name="lockscreen_cover_filter_blur">Blur</string>
     <string name="lockscreen_cover_filter_grayblur">Grayscale and blurred</string>
 
+
+    <string name="album_art_title">Control lockscreen covers</string>
+    <string name="lockscreen_misc_stuff">Lockscreen tweaks</string>
+
+    <!-- Media art -->
+    <string name="media_art_title">Media cover art</string>
+    <string name="media_art_summary">Enable media cover art on the lockscreen</string>
+
 </resources>

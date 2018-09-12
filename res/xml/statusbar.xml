@@ -52,4 +52,10 @@
         android:icon="@drawable/ic_volte"
         android:defaultValue="false"/>
 
+    <!-- DT2W -->
+    <com.potato.fries.preferences.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/double_tap_sleep_gesture_title"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
