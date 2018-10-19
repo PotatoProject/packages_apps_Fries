@@ -21,6 +21,13 @@
         android:key="navbar_visibility"
         android:title="@string/navbar_visibility" />
 
+    <Preference
+        android:key="gesture_settings"
+        android:title="@string/gesture_preference_title"
+        android:icon="@drawable/ic_settings_gestures"
+        android:fragment="com.android.settings.gestures.GestureSettings"
+        settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
+
     <PreferenceCategory
         android:key="hardware_keys"
         android:title="@string/hardware_keys_category" >
