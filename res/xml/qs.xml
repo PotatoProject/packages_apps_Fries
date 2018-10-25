@@ -24,6 +24,12 @@
         android:entries="@array/quick_pulldown_entries"
         android:entryValues="@array/quick_pulldown_values" />
 
+    <Preference
+        android:key="traffic"
+        android:fragment="com.potato.fries.fragments.Traffic"
+        android:icon="@drawable/ic_traffic"
+        android:title="@string/traffic_title" />
+
     <com.potato.fries.preferences.SystemSettingSwitchPreference
         android:key="qs_tile_title_visibility"
         android:title="@string/qs_tile_title_visibility_title"
