@@ -17,6 +17,7 @@
 package com.potato.fries.fragments;
 
 import android.os.Bundle;
+import android.content.Context;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
 import android.support.v7.preference.Preference;
