@@ -18,6 +18,8 @@
     <string name="fries_dashboard_summary">Customise your potato</string>
     <string name="statusbar_main">Statusbar</string>
     <string name="statusbar_main_summary">Change potato status styles</string>
+    <string name="qs_main">Quick settings</string>
+    <string name="qs_main_summary">QS-Panel settings</string>
     <string name="theme_main">Themes</string>
     <string name="theme_main_summary">Color it up!</string>
     <string name="buttonandgesture_main">Buttons &amp; Gestures</string>

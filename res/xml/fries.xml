@@ -24,6 +24,13 @@
         android:icon="@drawable/ic_statusbar" />
 
     <Preference
+        android:key="qs_settings"
+        android:title="@string/qs_main"
+        android:summary="@string/qs_main_summary"
+        android:fragment="com.potato.fries.fragments.QSFragment"
+        android:icon="@drawable/ic_qs" />
+
+    <Preference
         android:key="theme_settings"
         android:title="@string/theme_main"
         android:summary="@string/theme_main_summary"
