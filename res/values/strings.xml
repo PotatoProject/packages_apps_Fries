@@ -117,4 +117,6 @@
     <string name="powermenu_lockdown_title">Lockdown</string>
     <string name="powermenu_screenshot_title">Screenshot</string>
 
+    <!-- Themes -->
+    <string name="accent_color">Accent color</string>
 </resources>

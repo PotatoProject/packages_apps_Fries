@@ -16,4 +16,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/theme_main">
 
+    <PreferenceCategory>
+        <Preference
+            android:key="accent_picker"
+            android:title="@string/accent_color" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
