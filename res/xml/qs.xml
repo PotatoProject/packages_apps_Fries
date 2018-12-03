@@ -18,4 +18,10 @@
         android:fragment="com.potato.fries.fragments.QsRowsColumns"
         android:title="@string/qs_rows_columns_title"/>
 
+    <com.potato.fries.preferences.SecureSettingSwitchPreference
+        android:key="qs_brightness_position_bottom"
+        android:title="@string/brightness_slider_bottom_title"
+        android:summary="@string/brightness_slider_bottom_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
