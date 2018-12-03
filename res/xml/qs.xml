@@ -13,4 +13,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/misc_main">
 
+    <Preference
+        android:key="qs_rows_columns"
+        android:fragment="com.potato.fries.fragments.QsRowsColumns"
+        android:title="@string/qs_rows_columns_title"/>
+
 </PreferenceScreen>
