@@ -16,14 +16,18 @@
 
 package com.potato.fries.fragments;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.content.Context;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.PreferenceFragment;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.internal.logging.nano.MetricsProto;
@@ -37,16 +41,40 @@ import java.util.List;
 public class QSFragment extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return false;
-    }
+    ListPreference mQuickPulldown;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.qs);
+
+        int qpmode = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 0, UserHandle.USER_CURRENT);
+        mQuickPulldown = (ListPreference) findPreference("status_bar_quick_qs_pulldown");
+        mQuickPulldown.setValue(String.valueOf(qpmode));
+        mQuickPulldown.setOnPreferenceChangeListener(this);
+
     }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+
+         if (preference == mQuickPulldown) {
+            int value = Integer.parseInt((String) newValue);
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, value,
+                    UserHandle.USER_CURRENT);
+            int index = mQuickPulldown.findIndexOfValue((String) newValue);
+            mQuickPulldown.setSummary(
+                    mQuickPulldown.getEntries()[index]);
+
+            return true;
+        }
+
+    return false;
+    }
+
 
     @Override
     public void onResume() {
