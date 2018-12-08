@@ -102,4 +102,8 @@
     <string name="volume_button_music_control_title">Playback control</string>
     <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
 
+    <!-- Roaming indicator icon -->
+    <string name="roaming_indicator_icon_title">Roaming indicator</string>
+    <string name="roaming_indicator_icon_summary">Roaming indicator in signal icon when in roaming mode</string>
+
 </resources>

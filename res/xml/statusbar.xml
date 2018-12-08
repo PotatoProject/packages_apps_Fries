@@ -23,4 +23,10 @@
         android:fragment="com.potato.fries.fragments.ClockOptions"
         android:icon="@drawable/ic_clock" />
 
+    <com.potato.fries.preferences.SystemSettingSwitchPreference
+        android:key="roaming_indicator_icon"
+        android:title="@string/roaming_indicator_icon_title"
+        android:summary="@string/roaming_indicator_icon_summary"
+        android:defaultValue="true"/>
+
 </PreferenceScreen>
