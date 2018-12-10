@@ -127,4 +127,8 @@
     <string name="content_padding">Corner content padding</string>
     <string name="corner_fwvals">Use framework values</string>
     <string name="corner_fwvals_summary">Useful if the device actually has rounded corners</string>
+
+    <!-- Smart Clock -->
+    <string name="use_smart_clock">Smart Clock</string>
+    <string name="use_smart_clock_summary">Show statusbar clock periodically</string>
 </resources>
