@@ -63,12 +63,6 @@
             android:summary="@string/button_backlight_on_touch_only_summary"
             android:defaultValue="false" />
 
-        <com.potato.fries.preferences.SystemSettingSwitchPreference
-            android:key="volume_button_music_control"
-            android:title="@string/volume_button_music_control_title"
-            android:summary="@string/volume_button_music_control_summary"
-            android:defaultValue="false" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -211,4 +205,9 @@
         android:title="@string/powermenu_screenshot_title"
         android:defaultValue="true" />
 
+    <com.potato.fries.preferences.SystemSettingSwitchPreference
+        android:key="volume_button_music_control"
+        android:title="@string/volume_button_music_control_title"
+        android:summary="@string/volume_button_music_control_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>
