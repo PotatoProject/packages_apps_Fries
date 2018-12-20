@@ -233,4 +233,7 @@
 
     <!-- Navbar -->
     <string name="navbar_visibility">Allow navigation bar</string>
+
+    <!-- QS themes -->
+    <string name="qs_themes_category_title">Quick Settings colors</string>
 </resources>
