@@ -17,9 +17,8 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/buttonandgesture_main">
 
-    <SwitchPreference
-        android:key="navbar_visibility"
-        android:title="@string/navbar_visibility" />
+    <PreferenceCategory
+        android:title="@string/nav_gesture_title">
 
     <Preference
         android:key="gesture_settings"
@@ -27,6 +26,12 @@
         android:icon="@drawable/ic_settings_gestures"
         android:fragment="com.android.settings.gestures.GestureSettings"
         settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
+
+    <SwitchPreference
+        android:key="navbar_visibility"
+        android:title="@string/navbar_visibility" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="hardware_keys"
@@ -184,6 +189,9 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/powermenu_title">
+
     <com.potato.fries.preferences.SecureSettingSwitchPreference
         android:key="reboot_in_power_menu"
         android:title="@string/powermenu_reboot_title"
@@ -205,9 +213,17 @@
         android:title="@string/powermenu_screenshot_title"
         android:defaultValue="true" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/system_title">
+
     <com.potato.fries.preferences.SystemSettingSwitchPreference
         android:key="volume_button_music_control"
         android:title="@string/volume_button_music_control_title"
         android:summary="@string/volume_button_music_control_summary"
         android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
