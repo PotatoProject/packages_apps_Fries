@@ -52,11 +52,6 @@ public class SecureSettingListPreference extends ListPreference {
         return value == null ? defaultReturnValue : value;
     }
 
-    @Override
-    protected boolean isPersisted() {
-        return Settings.Secure.getString(getContext().getContentResolver(), getKey()) != null;
-    }
-
     public int getIntValue(int defValue) {
         return getValue() == null ? defValue : Integer.valueOf(getValue());
     }
