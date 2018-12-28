@@ -254,7 +254,7 @@
     <string name="system_title">System</string>
 
     <!-- Lockscreen title -->
-    <string name="lockscreen_title">Lockscreen</string>
+    <string name="lockscreen_title">Lockscreen and Gestures</string>
 
     <!-- Incall vibrate options -->
     <string name="incall_vibration_category">In-call vibration options</string>
