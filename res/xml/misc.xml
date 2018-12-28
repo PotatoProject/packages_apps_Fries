@@ -47,7 +47,7 @@
         android:defaultValue="false" />
 
     <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_lockscreen"
+        android:key="double_tap_sleep_anywhere"
         android:title="@string/double_tap_sleep_lockscreen"
         android:defaultValue="false" />
 
