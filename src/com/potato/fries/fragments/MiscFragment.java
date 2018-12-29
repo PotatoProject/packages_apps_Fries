@@ -30,12 +30,15 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.potato.fries.preferences.SystemSettingListPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiscFragment extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
+
+    private static final String KEY_WEATHER_TEMP = "weather_lockscreen_unit";
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -46,6 +49,13 @@ public class MiscFragment extends SettingsPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.misc);
+
+        SystemSettingListPreference mWeatherTemp =
+                (SystemSettingListPreference) findPreference(KEY_WEATHER_TEMP);
+        if (!com.android.internal.util.potato.Utils.isPackageInstalled(
+                getActivity(), "org.pixelexperience.weather.client")) {
+            getPreferenceScreen().removePreference(mWeatherTemp);
+        }
     }
 
     @Override
