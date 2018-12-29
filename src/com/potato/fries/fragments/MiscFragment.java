@@ -52,7 +52,7 @@ public class MiscFragment extends SettingsPreferenceFragment
 
         SystemSettingListPreference mWeatherTemp =
                 (SystemSettingListPreference) findPreference(KEY_WEATHER_TEMP);
-        if (!com.android.internal.util.potato.Utils.isPackageInstalled(
+        if (!com.potato.fries.preferences.Utils.isPackageInstalled(
                 getActivity(), "org.pixelexperience.weather.client")) {
             getPreferenceScreen().removePreference(mWeatherTemp);
         }
