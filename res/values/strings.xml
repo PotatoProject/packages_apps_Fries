@@ -85,9 +85,12 @@
     <string name="qs_columns_portrait_title">Tiles columns on portrait</string>
     <string name="qs_columns_landscape_title">Tiles columns on landscape</string>
 
-    <!-- Brightness slider position -->
+    <!-- Brightness slider tweaks -->
     <string name="brightness_slider_bottom_title">Bottom brightness slider</string>
     <string name="brightness_slider_bottom_summary">Show brightness slider on the bottom of the quick settings panel</string>
+    <string name="tuner_show_auto_brightness">Adaptive brightness button</string>
+    <string name="tuner_auto_brightness_right">Right position for adaptive brightness button</string>
+    <string name="tuner_show_brightness_buttons">Brightness control buttons</string>
 
     <!-- QS Tile title -->
     <string name="qs_tile_title_visibility_title">Show tiles title</string>
@@ -272,5 +275,8 @@
     <string name="weather_unit">Temperature unit</string>
     <string name="weather_unit_metric" translatable="false">Celsius</string>
     <string name="weather_unit_imperial" translatable="false">Fahrenheit</string>
+
+    <!--Brightness slider title -->
+    <string name="brightness_slider_title">Brightness slider</string>
 
 </resources>

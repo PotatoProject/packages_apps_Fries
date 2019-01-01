@@ -24,16 +24,36 @@
         android:entries="@array/quick_pulldown_entries"
         android:entryValues="@array/quick_pulldown_values" />
 
+    <com.potato.fries.preferences.SystemSettingSwitchPreference
+        android:key="qs_tile_title_visibility"
+        android:title="@string/qs_tile_title_visibility_title"
+        android:summary="@string/qs_tile_title_visibility_summary"
+        android:defaultValue="true" />
+
+    <PreferenceCategory
+        android:title="@string/brightness_slider_title">
+
     <com.potato.fries.preferences.SecureSettingSwitchPreference
         android:key="qs_brightness_position_bottom"
         android:title="@string/brightness_slider_bottom_title"
         android:summary="@string/brightness_slider_bottom_summary"
         android:defaultValue="false" />
 
-    <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="qs_tile_title_visibility"
-        android:title="@string/qs_tile_title_visibility_title"
-        android:summary="@string/qs_tile_title_visibility_summary"
+    <com.potato.fries.preferences.SecureSettingSwitchPreference
+        android:key="qs_show_auto_brightness"
+        android:title="@string/tuner_show_auto_brightness"
         android:defaultValue="true" />
+
+    <com.potato.fries.preferences.SecureSettingSwitchPreference
+        android:key="qs_auto_brightness_right"
+        android:title="@string/tuner_auto_brightness_right"
+        android:defaultValue="true" />
+
+    <com.potato.fries.preferences.SecureSettingSwitchPreference
+        android:key="qs_show_brightness_buttons"
+        android:title="@string/tuner_show_brightness_buttons"
+        android:defaultValue="true" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
