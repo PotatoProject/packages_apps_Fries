@@ -22,6 +22,8 @@
     <string name="qs_main_summary">QS-Panel settings</string>
     <string name="theme_main">Themes</string>
     <string name="theme_main_summary">Color it up!</string>
+    <string name="cutout_main">Display cutout settings</string>
+    <string name="cutout_main_summary">They really cut corners with this one</string>
     <string name="buttonandgesture_main">Buttons &amp; Gestures</string>
     <string name="buttonandgesture_main_summary">Navigation keys, gestures</string>
     <string name="notification_main">Notifications</string>
@@ -276,11 +278,18 @@
     <string name="weather_unit_metric" translatable="false">Celsius</string>
     <string name="weather_unit_imperial" translatable="false">Fahrenheit</string>
 
+    <!-- Display cutout options -->
+    <string name="display_cutout_style_title">Cutout style</string>
+    <string name="display_cutout_style_normal">Normal</string>
+    <string name="display_cutout_style_immerse">Immerse</string>
+    <string name="display_cutout_style_hide">Hide</string>
+    <string name="stock_statusbar_in_hide">Stock statusbar height</string>
+    <string name="stock_statusbar_in_hide_summary">Use default statusbar height in Hide</string>
+
     <!--Brightness slider title -->
     <string name="brightness_slider_title">Brightness slider</string>
 
     <!-- Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel animation</string>
     <string name="pixel_navbar_anim_summary">Toggle home button animation</string>
-
 </resources>
