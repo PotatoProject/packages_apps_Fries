@@ -27,6 +27,13 @@
         android:fragment="com.android.settings.gestures.GestureSettings"
         settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
 
+    <com.potato.fries.preferences.SystemSettingSwitchPreference
+        android:key="pixel_nav_animation"
+        android:title="@string/pixel_navbar_anim_title"
+        android:summary="@string/pixel_navbar_anim_summary"
+        android:dependency="navbar_visibility"
+        android:defaultValue="true" />
+
     <SwitchPreference
         android:key="navbar_visibility"
         android:title="@string/navbar_visibility" />
