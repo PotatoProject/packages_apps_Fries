@@ -38,6 +38,13 @@
         android:icon="@drawable/ic_theme" />
 
     <Preference
+        android:key="cutout_settings"
+        android:title="@string/cutout_main"
+        android:summary="@string/cutout_main_summary"
+        android:fragment="com.potato.fries.fragments.CutoutFragment"
+        android:icon="@drawable/ic_cutout" />
+
+    <Preference
         android:key="buttonandgesture_settings"
         android:title="@string/buttonandgesture_main"
         android:summary="@string/buttonandgesture_main_summary"
