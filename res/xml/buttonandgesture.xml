@@ -20,29 +20,22 @@
     <PreferenceCategory
         android:title="@string/nav_gesture_title">
 
-    <Preference
-        android:key="gesture_settings"
-        android:title="@string/gesture_preference_title"
-        android:icon="@drawable/ic_settings_gestures"
-        android:fragment="com.android.settings.gestures.GestureSettings"
-        settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
+        <SwitchPreference
+            android:key="navbar_visibility"
+            android:title="@string/navbar_visibility" />
 
-    <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="pixel_nav_animation"
-        android:title="@string/pixel_navbar_anim_title"
-        android:summary="@string/pixel_navbar_anim_summary"
-        android:dependency="navbar_visibility"
-        android:defaultValue="true" />
+        <com.potato.fries.preferences.SystemSettingSwitchPreference
+            android:key="pixel_nav_animation"
+            android:title="@string/pixel_navbar_anim_title"
+            android:summary="@string/pixel_navbar_anim_summary"
+            android:dependency="navbar_visibility"
+            android:defaultValue="true" />
 
-    <SwitchPreference
-        android:key="navbar_visibility"
-        android:title="@string/navbar_visibility" />
-
-    <Preference
-        android:key="gesture_settings"
-        android:icon="@drawable/ic_gestures_custom"
-        android:title="@string/gesture_settings_title"
-        android:fragment="com.potato.fries.fragments.GestureSettings" />
+        <Preference
+            android:key="gesture_settings"
+            android:icon="@drawable/ic_gestures_custom"
+            android:title="@string/gesture_preference_title"
+            android:fragment="com.potato.fries.fragments.GestureSettings" />
 
     </PreferenceCategory>
 

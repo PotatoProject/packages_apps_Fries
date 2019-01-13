@@ -46,7 +46,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements Index
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.gesture_settings);
+        addPreferencesFromResource(R.xml.gesture);
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.gesture_settings_info);
     }
 
@@ -65,7 +65,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements Index
             public List<SearchIndexableResource> getXmlResourcesToIndex(
                     Context context, boolean enabled) {
                 final SearchIndexableResource sir = new SearchIndexableResource(context);
-                sir.xmlResId = R.xml.gesture_settings;
+                sir.xmlResId = R.xml.gesture;
                 return Arrays.asList(sir);
             }
 	};
