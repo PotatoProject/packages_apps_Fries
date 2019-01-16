@@ -33,4 +33,10 @@
         android:summary="@string/use_bottom_gesture_summary"
         android:defaultValue="false" />
 
+	<com.potato.fries.preferences.SystemSettingSwitchPreference
+        android:key="three_finger_gesture"
+        android:title="@string/three_finger_gesture"
+        android:summary="@string/three_finger_gesture_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
