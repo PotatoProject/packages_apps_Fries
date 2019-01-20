@@ -30,6 +30,12 @@
         android:summary="@string/qs_tile_title_visibility_summary"
         android:defaultValue="true" />
 
+    <com.potato.fries.preferences.SecureSettingSwitchPreference
+        android:key="status_bar_locked_on_secure_keyguard"
+        android:title="@string/block_on_secure_keyguard_title"
+        android:summary="@string/block_on_secure_keyguard_summary"
+        android:defaultValue="false"/>
+
     <PreferenceCategory
         android:title="@string/brightness_slider_title">
 
