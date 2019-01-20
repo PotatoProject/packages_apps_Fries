@@ -316,4 +316,8 @@
     <string name="block_on_secure_keyguard_title">Disable quick settings</string>
     <string name="block_on_secure_keyguard_summary">Disables quick settings on secure lockscreen</string>
 
+    <!-- Hide the power menu on the lockscreen -->
+    <string name="powermenu_lockscreen_title">Lockscreen visibility</string>
+    <string name="powermenu_lockscreen_summary">Enable the ability to show and use the power menu dialog while on the lockscreen</string>
+
 </resources>
