@@ -41,6 +41,7 @@ import com.potato.fries.preferences.CustomSeekBarPreference;
 
 import com.android.internal.util.hwkeys.ActionConstants;
 import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.potato.PotatoUtils;
 
 import com.potato.fries.preferences.ActionFragment;
 import com.potato.fries.preferences.CustomSeekBarPreference;
@@ -50,6 +51,10 @@ import java.util.List;
 
 public class ButtonandGestureFragment extends ActionFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
+
+    private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
+
+    private ListPreference mTorchPowerButton;
 
     // Keys
     private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
@@ -93,6 +98,21 @@ public class ButtonandGestureFragment extends ActionFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mTorchPowerButton) {
+            int mTorchPowerButtonValue = Integer.valueOf((String) newValue);
+            int index = mTorchPowerButton.findIndexOfValue((String) newValue);
+            mTorchPowerButton.setSummary(
+                    mTorchPowerButton.getEntries()[index]);
+            Settings.Secure.putInt(resolver, Settings.Secure.TORCH_POWER_BUTTON_GESTURE,
+                    mTorchPowerButtonValue);
+            if (mTorchPowerButtonValue == 1) {
+                //if doubletap for torch is enabled, switch off double tap for camera
+                Settings.Secure.putInt(resolver, Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
+                        1);
+            }
+            return true;
+        }
         if (preference == mBacklightTimeout) {
             String BacklightTimeout = (String) newValue;
             int BacklightTimeoutValue = Integer.parseInt(BacklightTimeout);
@@ -149,6 +169,24 @@ public class ButtonandGestureFragment extends ActionFragment
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.buttonandgesture);
 
+        final Resources res = getResources();
+        final ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        if (!com.potato.fries.preferences.Utils.deviceSupportsFlashLight(getContext())) {
+            Preference toRemove = prefScreen.findPreference(TORCH_POWER_BUTTON_GESTURE);
+            if (toRemove != null) {
+                prefScreen.removePreference(toRemove);
+            }
+        } else {
+            mTorchPowerButton = (ListPreference) findPreference(TORCH_POWER_BUTTON_GESTURE);
+            int mTorchPowerButtonValue = Settings.Secure.getInt(resolver,
+                    Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0);
+            mTorchPowerButton.setValue(Integer.toString(mTorchPowerButtonValue));
+            mTorchPowerButton.setSummary(mTorchPowerButton.getEntry());
+            mTorchPowerButton.setOnPreferenceChangeListener(this);
+        }
+
         mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
 
         boolean showing = Settings.Secure.getInt(getContentResolver(), Settings.Secure.NAVIGATION_BAR_VISIBLE,
@@ -156,10 +194,6 @@ public class ButtonandGestureFragment extends ActionFragment
         updateBarVisibleAndUpdatePrefs(showing);
         mNavbarVisibility.setOnPreferenceChangeListener(this);
         mHandler = new Handler();
-
-        final Resources res = getResources();
-        final ContentResolver resolver = getActivity().getContentResolver();
-        final PreferenceScreen prefScreen = getPreferenceScreen();
 
         // volume key cursor control
         mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
