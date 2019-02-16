@@ -128,6 +128,8 @@
     <string name="base_theme">Base theme color</string>
     <string name="prefer_black_themes">Prefer black themes</string>
     <string name="prefer_black_themes_summary">Use black theme overlays instead of dark ones when possible</string>
+    <string name="use_oreo_settings">Oreo settings icons</string>
+    <string name="use_oreo_settings_summary">Blast from the past!</string>
 
     <!-- Corners -->
     <string name="corners_category">Corners</string>

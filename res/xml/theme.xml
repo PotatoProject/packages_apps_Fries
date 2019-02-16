@@ -39,6 +39,12 @@
             android:title="@string/prefer_black_themes"
             android:summary="@string/prefer_black_themes_summary"
             android:defaultValue="false" />
+
+        <com.potato.fries.preferences.SystemSettingSwitchPreference
+            android:key="use_oreo_settings"
+            android:title="@string/use_oreo_settings"
+            android:summary="@string/use_oreo_settings_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
