@@ -351,5 +351,9 @@
     <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
     <string name="traffic_title">Traffic indicators</string>
     <string name="network_traffic_title">Network traffic</string>
-x
+
+    <!-- Hide arrows in Network Traffic indicators -->
+    <string name="network_traffic_hidearrow">Hide arrows</string>
+    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
+
 </resources>
