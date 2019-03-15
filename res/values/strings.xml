@@ -16,7 +16,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="fries_dashboard_title">Fries</string>
     <string name="fries_dashboard_summary">Customise your potato</string>
-    <string name="statusbar_main">Statusbar</string>
+    <string name="statusbar_main">Status bar</string>
     <string name="statusbar_main_summary">Change potato status styles</string>
     <string name="qs_main">Quick settings</string>
     <string name="qs_main_summary">QS-Panel settings</string>
@@ -31,7 +31,7 @@
     <string name="misc_main">Miscellaneous</string>
     <string name="misc_main_summary">Stuff we don\'t know where to put</string>
     <string name="clock_main">Clock settings</string>
-    <string name="clock_main_summary">Statusbar clock customisation</string>
+    <string name="clock_main_summary">Status bar clock customisation</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -101,8 +101,8 @@
     <!-- Quick Pull -->
     <string name="status_bar_quick_qs_pulldown">Quick QS pulldown</string>
     <string name="quick_pulldown_none">Disabled</string>
-    <string name="quick_pulldown_right">Pulldown statusbar from right side</string>
-    <string name="quick_pulldown_left">Pulldown statusbar from left side</string>
+    <string name="quick_pulldown_right">Pulldown status bar from right side</string>
+    <string name="quick_pulldown_left">Pulldown status bar from left side</string>
 
     <!-- Volume rocker music control -->
     <string name="volume_button_music_control_title">Playback control</string>
@@ -142,7 +142,7 @@
 
     <!-- Smart Clock -->
     <string name="use_smart_clock">Smart Clock</string>
-    <string name="use_smart_clock_summary">Show statusbar clock periodically</string>
+    <string name="use_smart_clock_summary">Show status bar clock periodically</string>
 
     <!-- Heads up -->
     <string name="heads_up_notifications">Heads up</string>
@@ -300,8 +300,8 @@
     <string name="display_cutout_style_normal">Normal</string>
     <string name="display_cutout_style_immerse">Immerse</string>
     <string name="display_cutout_style_hide">Hide</string>
-    <string name="stock_statusbar_in_hide">Stock statusbar height</string>
-    <string name="stock_statusbar_in_hide_summary">Use default statusbar height in Hide</string>
+    <string name="stock_statusbar_in_hide">Stock status bar height</string>
+    <string name="stock_statusbar_in_hide_summary">Use default status bar height in Hide</string>
 
     <!--Brightness slider title -->
     <string name="brightness_slider_title">Brightness slider</string>
@@ -354,7 +354,7 @@
     <string name="torch_power_button_gesture_lp">Long press power to toggle torch</string>
 
     <!-- Network Traffic -->
-    <string name="network_traffic_state_title">Show net activity in expanded statusbar</string>
+    <string name="network_traffic_state_title">Show net activity in expanded status bar</string>
     <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
     <string name="traffic_title">Traffic indicators</string>
     <string name="network_traffic_title">Network traffic</string>
