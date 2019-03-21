@@ -131,9 +131,11 @@
     <string name="prefer_black_themes">Prefer black themes</string>
     <string name="prefer_black_themes_summary">Use black theme overlays instead of dark ones when possible</string>
     <string name="use_oreo_settings">Oreo settings icons</string>
-    <string name="use_oreo_settings_summary">Blast from the past!</string>
+    <string name="use_oreo_settings_summary">Blast from the Past!</string>
     <string name="settings_icon_tint">Tint settings icons</string>
     <string name="settings_icon_tint_summary">Show off that accent 😉</string>
+    <string name="qs_panel_use_oreo_style">Toggle Oreo QS-Panel</string>
+    <string name="qs_panel_use_oreo_style_summary">Blast to the past! (Will restart SystemUI)</string>
 
     <!-- Corners -->
     <string name="corners_category">Corners</string>

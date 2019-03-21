@@ -16,9 +16,13 @@
 
 package com.potato.fries.fragments;
 
+import android.app.ActivityManager;
+import android.app.IActivityManager;
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Process;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.content.Context;
@@ -34,6 +38,7 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.PreferenceFragment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.internal.logging.nano.MetricsProto;
@@ -44,6 +49,7 @@ import com.android.settings.wrapper.OverlayManagerWrapper;
 import com.android.settings.wrapper.OverlayManagerWrapper.OverlayInfo;
 import com.potato.fries.preferences.CustomSeekBarPreference;
 import com.potato.fries.preferences.SecureSettingSwitchPreference;
+import com.potato.fries.preferences.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +69,7 @@ public class ThemeFragment extends SettingsPreferenceFragment
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
     private static final String QS_PANEL_ALPHA = "qs_panel_alpha";
     private static final String QS_PANEL_COLOR = "qs_panel_color";
+    private static final String QS_PANEL_USE_OREO_STYLE= "qs_panel_use_oreo_style";
 
     private Handler mHandler;
 
@@ -77,6 +84,7 @@ public class ThemeFragment extends SettingsPreferenceFragment
     private ListPreference mSystemUiThemePref;
     private CustomSeekBarPreference mQsPanelAlpha;
     private ColorPickerPreference mQsPanelColor;
+    private SystemSettingSwitchPreference mQsOreoStyle;
     private int mQsPanelAlphaValue;
     private boolean mChangeQsPanelAlpha = true;
 
@@ -122,6 +130,11 @@ public class ThemeFragment extends SettingsPreferenceFragment
                     UserHandle.USER_CURRENT);
         } else if (preference == mRoundedFwvals) {
             restoreCorners();
+        } else if (preference == mQsOreoStyle) {
+            new RestartSystemUiTask(getContext()).execute();
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.QS_PANEL_BG_USE_FW, 1,
+                    UserHandle.USER_CURRENT);
         }
         return true;
     }
@@ -241,6 +254,9 @@ public class ThemeFragment extends SettingsPreferenceFragment
                 Settings.System.QS_PANEL_BG_COLOR, Color.WHITE, UserHandle.USER_CURRENT);
         mQsPanelColor.setNewPreviewColor(QsColor);
         mQsPanelColor.setOnPreferenceChangeListener(this);
+
+        mQsOreoStyle = (SystemSettingSwitchPreference) findPreference(QS_PANEL_USE_OREO_STYLE);
+        mQsOreoStyle.setOnPreferenceChangeListener(this);
     }
 
     public void updateEnableState() {
@@ -331,6 +347,35 @@ public class ThemeFragment extends SettingsPreferenceFragment
             return pi != null && !pi.isStaticOverlayPackage();
         } catch (PackageManager.NameNotFoundException e) {
             return false;
+        }
+    }
+
+    private static class RestartSystemUiTask extends AsyncTask<Void, Void, Void> {
+        private Context mContext;
+        public RestartSystemUiTask(Context context) {
+            super();
+            mContext = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                 Thread.sleep(300); //0.3s
+            } catch (InterruptedException ie) {}
+            try {
+                ActivityManager am =
+                        (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+                IActivityManager ams = ActivityManager.getService();
+                for (ActivityManager.RunningAppProcessInfo app: am.getRunningAppProcesses()) {
+                    if ("com.android.systemui".equals(app.processName)) {
+                        ams.killApplicationProcess(app.processName, app.uid);
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 }
