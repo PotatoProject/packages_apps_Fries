@@ -47,6 +47,62 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/powermenu_title">
+
+        <com.potato.fries.preferences.SecureSettingSwitchPreference
+            android:key="reboot_in_power_menu"
+            android:title="@string/powermenu_reboot_title"
+            android:defaultValue="true" />
+
+        <com.potato.fries.preferences.SecureSettingSwitchPreference
+            android:key="lockdown_in_power_menu"
+            android:title="@string/powermenu_lockdown_title"
+            android:defaultValue="false" />
+
+        <com.potato.fries.preferences.SecureSettingSwitchPreference
+            android:key="screenshot_in_power_menu"
+            android:title="@string/powermenu_screenshot_title"
+            android:defaultValue="true" />
+
+        <com.potato.fries.preferences.SecureSettingSwitchPreference
+            android:key="advanced_reboot_in_power_menu"
+            android:title="@string/powermenu_advanced_restart_title"
+            android:summary="@string/powermenu_advanced_restart_summary"
+            android:defaultValue="false" />
+
+        <com.potato.fries.preferences.SystemSettingSwitchPreference
+            android:key="powermenu_lockscreen"
+            android:title="@string/powermenu_lockscreen_title"
+            android:summary="@string/powermenu_lockscreen_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/system_title">
+
+        <com.potato.fries.preferences.SystemSettingSwitchPreference
+            android:key="volume_button_music_control"
+            android:title="@string/volume_button_music_control_title"
+            android:summary="@string/volume_button_music_control_summary"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:dialogTitle="@string/volume_key_cursor_control_title"
+            android:entries="@array/volume_key_cursor_control_entries"
+            android:entryValues="@array/volume_key_cursor_control_values"
+            android:key="volume_key_cursor_control"
+            android:title="@string/volume_key_cursor_control_title" />
+
+        <ListPreference
+            android:key="torch_power_button_gesture"
+            android:title="@string/torch_power_button_gesture_title"
+            android:entries="@array/torch_power_button_gesture_entries"
+            android:entryValues="@array/torch_power_button_gesture_values" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="hardware_keys"
         android:title="@string/hardware_keys_category" >
 
@@ -201,61 +257,5 @@
         </com.potato.fries.preferences.ActionPreference>
 
     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/powermenu_title">
-
-    <com.potato.fries.preferences.SecureSettingSwitchPreference
-        android:key="reboot_in_power_menu"
-        android:title="@string/powermenu_reboot_title"
-        android:defaultValue="true" />
-
-    <com.potato.fries.preferences.SecureSettingSwitchPreference
-        android:key="lockdown_in_power_menu"
-        android:title="@string/powermenu_lockdown_title"	
-        android:defaultValue="false" />
-
-    <com.potato.fries.preferences.SecureSettingSwitchPreference
-        android:key="screenshot_in_power_menu"
-        android:title="@string/powermenu_screenshot_title"
-        android:defaultValue="true" />
-
-    <com.potato.fries.preferences.SecureSettingSwitchPreference
-        android:key="advanced_reboot_in_power_menu"
-        android:title="@string/powermenu_advanced_restart_title"
-        android:summary="@string/powermenu_advanced_restart_summary"
-        android:defaultValue="false" />
-
-    <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="powermenu_lockscreen"
-        android:title="@string/powermenu_lockscreen_title"
-        android:summary="@string/powermenu_lockscreen_summary"
-        android:defaultValue="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/system_title">
-
-    <com.potato.fries.preferences.SystemSettingSwitchPreference
-        android:key="volume_button_music_control"
-        android:title="@string/volume_button_music_control_title"
-        android:summary="@string/volume_button_music_control_summary"
-        android:defaultValue="false" />
-
-    <ListPreference
-        android:dialogTitle="@string/volume_key_cursor_control_title"
-        android:entries="@array/volume_key_cursor_control_entries"
-        android:entryValues="@array/volume_key_cursor_control_values"
-        android:key="volume_key_cursor_control"
-        android:title="@string/volume_key_cursor_control_title" />
-
-    </PreferenceCategory>
-
-    <ListPreference
-        android:key="torch_power_button_gesture"
-        android:title="@string/torch_power_button_gesture_title"
-        android:entries="@array/torch_power_button_gesture_entries"
-        android:entryValues="@array/torch_power_button_gesture_values" />
 
 </PreferenceScreen>
