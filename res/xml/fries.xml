@@ -16,49 +16,49 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/fries_dashboard_title">
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="statusbar_settings"
         android:title="@string/statusbar_main"
         android:summary="@string/statusbar_main_summary"
         android:fragment="com.potato.fries.fragments.StatusbarFragment"
         android:icon="@drawable/ic_statusbar" />
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="qs_settings"
         android:title="@string/qs_main"
         android:summary="@string/qs_main_summary"
         android:fragment="com.potato.fries.fragments.QSFragment"
         android:icon="@drawable/ic_qs" />
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="theme_settings"
         android:title="@string/theme_main"
         android:summary="@string/theme_main_summary"
         android:fragment="com.potato.fries.fragments.ThemeFragment"
         android:icon="@drawable/ic_theme" />
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="cutout_settings"
         android:title="@string/cutout_main"
         android:summary="@string/cutout_main_summary"
         android:fragment="com.potato.fries.fragments.CutoutFragment"
         android:icon="@drawable/ic_cutout" />
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="buttonandgesture_settings"
         android:title="@string/buttonandgesture_main"
         android:summary="@string/buttonandgesture_main_summary"
         android:fragment="com.potato.fries.fragments.ButtonandGestureFragment"
         android:icon="@drawable/ic_buttonandgesture" />
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="notification_settings"
         android:title="@string/notification_main"
         android:summary="@string/notification_main_summary"
         android:fragment="com.potato.fries.fragments.NotificationFragment"
         android:icon="@drawable/ic_notification" />
 
-    <Preference
+    <com.potato.fries.preferences.CardviewPreference
         android:key="misc_settings"
         android:title="@string/misc_main"
         android:summary="@string/misc_main_summary"
