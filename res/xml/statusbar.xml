@@ -17,7 +17,8 @@
     android:title="@string/statusbar_main">
 
     <Preference
-            android:title="@string/statusbar_tuner_title" >
+            android:title="@string/statusbar_tuner_title" 
+            android:icon="@drawable/ic_statusbar_icons">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusBarActivity" />
@@ -40,6 +41,7 @@
         android:key="roaming_indicator_icon"
         android:title="@string/roaming_indicator_icon_title"
         android:summary="@string/roaming_indicator_icon_summary"
+        android:icon="@drawable/ic_roaming_indicator"
         android:defaultValue="true"/>
 
     <!-- VoLTE Icon -->
@@ -47,6 +49,7 @@
         android:key="volte_icon"
         android:title="@string/volte_icon_title"
         android:summary="@string/volte_icon_summary"
+        android:icon="@drawable/ic_volte"
         android:defaultValue="false"/>
 
 </PreferenceScreen>
