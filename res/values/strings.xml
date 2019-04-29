@@ -32,6 +32,8 @@
     <string name="misc_main_summary">Stuff we don\'t know where to put</string>
     <string name="clock_main">Clock settings</string>
     <string name="clock_main_summary">Status bar clock customisation</string>
+    <string name="lockscreen_main">Lockscreen</string>
+    <string name="lockscreen_summary">Make your lockscreen look cooler?</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>

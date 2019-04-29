@@ -59,6 +59,13 @@
         android:icon="@drawable/ic_notification" />
 
     <com.potato.fries.preferences.CardviewPreference
+        android:key="lockscreen_settings"
+        android:title="@string/lockscreen_main"
+        android:summary="@string/lockscreen_summary"
+        android:fragment="com.potato.fries.fragments.LockscreenFragment"
+        android:icon="@drawable/ic_lockscreen" />
+
+    <com.potato.fries.preferences.CardviewPreference
         android:key="misc_settings"
         android:title="@string/misc_main"
         android:summary="@string/misc_main_summary"
