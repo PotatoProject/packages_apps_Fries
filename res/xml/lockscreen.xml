@@ -54,6 +54,11 @@
         android:entryValues="@array/weather_unit_values"
         android:defaultValue="0" />
 
+ </PreferenceCategory>
+
+ <PreferenceCategory
+    android:title="@string/ls_clock_category">
+
     <com.potato.fries.preferences.SystemSettingSwitchPreference
         android:key="lockscreen_clock"
         android:title="@string/lockscreen_clock_title"

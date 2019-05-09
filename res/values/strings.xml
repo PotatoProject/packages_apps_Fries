@@ -401,5 +401,5 @@
     <string name="lockscreen_clock_selection_sammy_accent_alt_bold">Sammy with accent (alt-bold)</string>
     <string name="lockscreen_clock_selection_sammy_accent_bold">Sammy with accent (bold)</string>
     <string name="lockscreen_clock_selection_text">Text</string>
-
+    <string name="ls_clock_category">Lockscreen clock options</string>
 </resources>
