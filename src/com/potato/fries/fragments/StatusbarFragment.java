@@ -16,13 +16,16 @@
 
 package com.potato.fries.fragments;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
 import android.content.Context;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v14.preference.PreferenceFragment;
 
 import com.android.settings.R;
@@ -37,16 +40,32 @@ import java.util.List;
 public class StatusbarFragment extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener, Indexable {
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return false;
-    }
+    private static final String KEY_STATUS_BAR_LOGO = "status_bar_logo";
+
+    private SwitchPreference mShowPOSPLogo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.statusbar);
+
+        mShowPOSPLogo = (SwitchPreference) findPreference(KEY_STATUS_BAR_LOGO);
+        mShowPOSPLogo.setChecked((Settings.System.getInt(getContentResolver(),
+             Settings.System.STATUS_BAR_LOGO, 0) == 1));
+        mShowPOSPLogo.setOnPreferenceChangeListener(this);
     }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if  (preference == mShowPOSPLogo) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_LOGO, value ? 1 : 0);
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public void onResume() {

@@ -402,4 +402,9 @@
     <string name="lockscreen_clock_selection_sammy_accent_bold">Sammy with accent (bold)</string>
     <string name="lockscreen_clock_selection_text">Text</string>
     <string name="ls_clock_category">Lockscreen clock options</string>
+
+    <!-- posp logo -->
+    <string name="posp_logo_title">Potate your statusbar</string>
+    <string name="posp_logo_summary">Let everyone know that you\'re using POSP when they see your screen</string>
+
 </resources>
