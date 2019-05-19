@@ -20,9 +20,12 @@
     <PreferenceCategory
         android:key="system_colors"
         android:title="@string/system_colors" >
-        <Preference
-            android:key="accent_picker"
-            android:title="@string/accent_color" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="accent_color"
+            android:title="@string/accent_color"
+            android:defaultValue="0xffffff"
+            android:persistent="false" />
 
         <ListPreference
             android:key="base_theme"
