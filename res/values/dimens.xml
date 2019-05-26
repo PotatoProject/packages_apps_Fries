@@ -22,9 +22,9 @@
     <dimen name="shortcut_picker_left_padding">70dip</dimen>
 
     <!-- Cardview Preference -->
-    <dimen name="card_elevation">8dp</dimen>
-    <dimen name="card_corner_radius">16dp</dimen>
-    <dimen name="card_margin_top">16dp</dimen>
-    <dimen name="card_margin_right">12dp</dimen>
-    <dimen name="card_margin_left">12dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_margin_top">8dp</dimen>
+    <dimen name="card_margin_right">8dp</dimen>
+    <dimen name="card_margin_left">8dp</dimen>
 </resources>
