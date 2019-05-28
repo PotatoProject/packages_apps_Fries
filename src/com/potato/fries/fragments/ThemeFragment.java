@@ -141,9 +141,6 @@ public class ThemeFragment extends SettingsPreferenceFragment
             restoreCorners();
         } else if (preference == mQsOreoStyle) {
             new RestartSystemUiTask(getContext()).execute();
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.QS_PANEL_BG_USE_FW, 1,
-                    UserHandle.USER_CURRENT);
         }
         return true;
     }

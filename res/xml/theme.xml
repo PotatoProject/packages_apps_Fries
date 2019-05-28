@@ -92,8 +92,7 @@
             android:key="qs_panel_use_oreo_style"
             android:title="@string/qs_panel_use_oreo_style"
             android:summary="@string/qs_panel_use_oreo_style_summary"
-            android:defaultValue="false"
-            android:disableDependentsState="true" />
+            android:defaultValue="false" />
 
         <com.potato.fries.preferences.CustomSeekBarPreference
             android:key="qs_panel_alpha"
@@ -107,8 +106,7 @@
             android:title="@string/qs_bg_use_fw"
             android:summary="@string/qs_bg_use_fw_summary"
             android:defaultValue="true"
-            android:disableDependentsState="true"
-            android:dependency="qs_panel_use_oreo_style" />
+            android:disableDependentsState="true" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="qs_panel_color"
