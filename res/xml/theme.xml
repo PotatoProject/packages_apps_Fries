@@ -31,6 +31,10 @@
             android:key="base_theme"
             android:title="@string/base_theme" />
 
+        <Preference
+            android:key="system_shape"
+            android:title="@string/system_shape" />
+
         <ListPreference
             android:key="systemui_theme"
             android:title="@string/device_theme"

@@ -64,6 +64,9 @@ public class ThemeFragment extends SettingsPreferenceFragment
     private static final String KEY_SYSUI_THEME = "systemui_theme";
     private static final String BASE_THEME_CATEGORY = "android.base_theme";
 
+    private static final String KEY_SYSTEM_SHAPE = "system_shape";
+    private static final String SYSTEM_SHAPE_CATEGORY = "android.shape";
+
     private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
@@ -80,6 +83,7 @@ public class ThemeFragment extends SettingsPreferenceFragment
     private Fragment mCurrentFragment = this;
     private OverlayManagerWrapper mOverlayService;
     private PackageManager mPackageManager;
+    private Preference mSystemWideShape;
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
     private SecureSettingSwitchPreference mRoundedFwvals;
@@ -98,6 +102,8 @@ public class ThemeFragment extends SettingsPreferenceFragment
                 return true;
             mOverlayService.setEnabledExclusiveInCategory((String) newValue, UserHandle.myUserId());
             mSystemThemeBase.setSummary(getCurrentTheme(BASE_THEME_CATEGORY));
+        } else if (preference == mSystemWideShape) {
+            mSystemWideShape.setSummary(getCurrentTheme(SYSTEM_SHAPE_CATEGORY));
         } else if (preference == mCornerRadius) {
             Settings.Secure.putInt(getContext().getContentResolver(), Settings.Secure.SYSUI_ROUNDED_SIZE,
                     ((int) newValue) * 1);
@@ -155,6 +161,7 @@ public class ThemeFragment extends SettingsPreferenceFragment
         mPackageManager = getActivity().getPackageManager();
         mHandler = new Handler();
         setupBasePref();
+        setupShapePref();
         setupCornerPrefs();
         setupStylePref();
         setupQsPrefs();
@@ -179,6 +186,11 @@ public class ThemeFragment extends SettingsPreferenceFragment
         mSystemThemeBase.setEntryValues(pkgs);
         mSystemThemeBase.setValue(getTheme(BASE_THEME_CATEGORY));
         mSystemThemeBase.setOnPreferenceChangeListener(this);
+    }
+
+    private void setupShapePref() {
+        mSystemWideShape = (Preference) findPreference(KEY_SYSTEM_SHAPE);
+        mSystemWideShape.setSummary(getCurrentTheme(SYSTEM_SHAPE_CATEGORY));
     }
 
     private void setupCornerPrefs() {
@@ -270,9 +282,23 @@ public class ThemeFragment extends SettingsPreferenceFragment
         mThemeColor.setOnPreferenceChangeListener(this);
     }
 
+    public void updateEnableState() {
+        if (mSystemWideShape == null) {
+            return;
+        }
+        mSystemWideShape.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                ShapeDialog.show(mCurrentFragment, preference);
+                return true;
+            }
+        });
+    }
+
     @Override
     public void onResume() {
         super.onResume();
+        updateEnableState();
     }
 
     @Override
